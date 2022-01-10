@@ -17,10 +17,20 @@ function getPizza() {
   // get pizzaInfo
   fetch(`/api/pizzas/${pizzaId}`)
     .then(response => {
-      console.log(response);
+      // check for a 4xx or 5xx error from server
+      if (!response.ok) {
+        throw new Error({ message: 'Something went wrong!' });
+      }
+
       return response.json();
     })
-    .then(printPizza);
+    .then(printPizza)
+    // any error takes the user back to the home page
+    .catch(err => {
+      console.log(err);
+      alert('Cannot find a pizza with this id! Taking you back.');
+      window.history.back();
+    });
 }
 
 function printPizza(pizzaData) {
@@ -125,6 +135,8 @@ function handleNewReplySubmit(event) {
 $backBtn.addEventListener('click', function() {
   window.history.back();
 });
+
+getPizza();
 
 $newCommentForm.addEventListener('submit', handleNewCommentSubmit);
 $commentSection.addEventListener('submit', handleNewReplySubmit);
