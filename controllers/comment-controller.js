@@ -8,8 +8,8 @@ const commentController = {
       .then(({ _id }) => {
         return Pizza.findOneAndUpdate(
           { _id: params.pizzaId },
-          { $push: { comments: _id } }, // $push similar to js push which adds data to array
-          { new: true }
+          { $push: { comments: _id } }, // $push similar to js push which adds data to array.  All of the MongoDB-based functions like $push start with a dollar sign ($)
+          { new: true } // => returns updated pizza with new comment included
         );
       })
       .then(dbPizzaData => {
