@@ -41,3 +41,18 @@ function saveRecord(record) {
   // add record to your store with add method
   pizzaObjectStore.add(record);
 }
+
+// Create a function that will handle collecting all of the data from the new_pizza object store in IndexedDB and POST it to the server
+//
+function uploadPizza() {
+  // open a transaction on your db
+  const transaction = db.transaction(["new_pizza"], "readwrite");
+
+  // access your object store
+  const pizzaObjectStore = transaction.objectStore("new_pizza");
+
+  // get all records from store and set to a variable
+  const getAll = pizzaObjectStore.getAll();
+
+  // more to come...
+}
