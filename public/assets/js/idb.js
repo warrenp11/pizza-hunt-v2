@@ -12,6 +12,7 @@ request.onupgradeneeded = function (event) {
 };
 
 // upon a successful
+// (when we finalize the connection to the database, we can store the resulting database object to the global variable db we created earlier)
 request.onsuccess = function (event) {
   // when db is successfully created with its object store (from onupgradedneeded event above) or simply established a connection, save reference to db in global variable
   db = event.target.result;
