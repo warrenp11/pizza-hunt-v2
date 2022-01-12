@@ -1,3 +1,3 @@
 # pizza-hunt-v2
 
-18.3.5 Update the Comment Controller and Routes
+18.3.6 Integrate Reply Functionality with the Front End

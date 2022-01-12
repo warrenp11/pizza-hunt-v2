@@ -38,6 +38,7 @@ const CommentSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      get: (createdAtVal) => dateFormat(createdAtVal),
     },
     // associate replies with comments, use ReplySchema to validate data for a reply
     replies: [ReplySchema],
